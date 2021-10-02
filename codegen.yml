@@ -1,0 +1,30 @@
+overwrite: true
+schema: 'src/graphql/**/*.graphql'
+documents: ''
+generates:
+  src/graphql/generated/schema.generated.graphql:
+    plugins:
+      - schema-ast
+  src/graphql/generated/graphql.generated.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+    config:
+      # typescript config
+      immutableTypes: true
+      scalars:
+        DateTime: Data
+      # typescript-resolvers config
+      showUnusedMappers: true
+      noSchemaStitching: true
+      #  context
+      contextType: 'src/lib/interfaces#IApolloServerCtx'
+      #  mapping between a GraphQL type to a TypeScript type
+      mappers:
+        User: 'src/database/entity#User'
+        Post: 'src/database/entity#Post'
+      mapperTypeSuffix: Entity
+      optionalResolveType: true
+    hooks:
+      afterOneFileWrite:
+        - prettier --write

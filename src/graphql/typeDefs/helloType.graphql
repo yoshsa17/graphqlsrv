@@ -1,0 +1,6 @@
+type Query {
+  """
+  this is first hello query!
+  """
+  hello: String
+}
