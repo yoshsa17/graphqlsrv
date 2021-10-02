@@ -1,3 +1,3 @@
 # graphql-codegen-example
 
-An Example GraphQL server made base on https://github.com/benawad/lireddit.
+An Example GraphQL server made based on https://github.com/benawad/lireddit.
